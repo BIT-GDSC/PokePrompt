@@ -26,12 +26,18 @@
                 </div>
                 <div class="gpt-response">
                     <h1>POKEDESK RESPONSE:</h1>
-                    <textarea name="response" id="response" cols="30" rows="10" readonly>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint, minima eius cum necessitatibus porro molestias dignissimos totam, vero veritatis reprehenderit dolor cupiditate. Dolor aliquam ut iste aperiam nemo consequatur dolorem?</textarea>
+                    <textarea name="response" id="response" cols="30" rows="10" readonly>Hi! I am PokeDex how can I help you today?</textarea>
                 </div>
             </div>
             <div class="desk-instructions">
                 <p id="scrolling-text">INSTRUCTIONS Goal of this game is to come up with the shortest user input that tricks the system prompt into returning the secret key (your Pokémon) back to you.</p>
             </div>
+            <div class="desk-input">
+                <textarea name="prompt-input" id="prompt-input" cols="30" rows="10" placeholder="Enter your Prompt here"></textarea>
+            </div>
+
+            <button id="submit-btn"></button>
+
         </div>
     </section>
     <script type="module" src="app.js"></script>

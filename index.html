@@ -46,10 +46,10 @@
                     <label for="member">Do you study in Bengal Institute of Technology (BIT)?</label>
                     <div class="nes-select">
                         <select id="member" name="member" required>
-                            <option value="" disabled selected hidden>Select...</option>
-                            <option value="true">Yes</option>
-                            <option value="false">No</option> <!-- Changed "NO" to "No" for consistency -->
-                        </select>
+                        <option value="" disabled selected hidden>Select...</option>
+                        <option value="true">Yes</option>
+                        <option value="false">No</option> <!-- Changed "NO" to "No" for consistency -->
+                    </select>
                     </div>
                 </div>
 
@@ -86,8 +86,26 @@
                 xhr.onreadystatechange = function() {
                     if (xhr.readyState === 4) {
                         if (xhr.status === 200) {
+                            console.log(data.name)
+                            const metadata = JSON.stringify({
+                                'level': 1,
+                                'User_json': {
+                                    'username': data.name,
+                                    'member': data.member,
+                                    'total_score': 0,
+                                    'level': {
+                                        'level_1': {
+                                            'score': 0,
+                                            'start_time': 'HH:MM:SS DD:MM:YYYY'
+                                        }
+                                    }
+                                }
+
+
+                            })
                             console.log("Server responded with:", xhr.responseText);
                             localStorage.setItem("responseData", xhr.responseText);
+                            localStorage.setItem("metadata", metadata);
                             window.location.href = "./pokeprompt";
                         } else {
                             console.error("Server returned an error:", xhr.statusText);
