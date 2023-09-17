@@ -1,25 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDSC-BIT | PokePrompt</title>
+    <!-- gfonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <!-- nes.css -->
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+    <!-- custom styles -->
     <link rel="stylesheet" href="style.css">
-    <title>PokePrompt</title>
 </head>
+
 <body>
-    <div class="page">
-        <div class="gdsc-logo"><img src="media/Group_6-removebg-preview 1.png"></div>
-        <div class="bird"> <img src="media/output-onlinegiftools 1.png"></div>
-        <div class="poke"><img src="media/PokéPrompt.png"></div>
-        <div class="poke"><img src="media/by GDSC-BIT.png"></div>
-        <div class="poke" id="game-screen"><img src="media/pokedesk.jpg" width="40%"></div>
-    </div>
-    <div>
-        <div><img src="media/"></div>
-    
+    <div class="formbold-main-wrapper">
+        <!-- Author: FormBold Team -->
+        <!-- Learn More: https://formbold.com -->
+        <div class="formbold-form-wrapper">
+
+            <div class="full-width logo-div">
+                <img src="https://cdn.discordapp.com/attachments/1152318832602525706/1152580696779530240/title.png" class="logo">
+            </div>
+
+            <form id="pokeForm">
+                <!-- Added an ID to the form for easier access in JavaScript -->
+
+                <div class="formbold-input-flex full-width">
+                    <div class="nes-field">
+                        <label for="name">Your name</label>
+                        <input type="text" id="name" name="name" class="nes-input" required>
+                    </div>
+                </div>
+
+                <div class="formbold-input-flex full-width">
+                    <div class="nes-field">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="nes-input" required>
+                    </div>
+                </div>
+
+                <div class="formbold-mb-3">
+                    <label for="member">Do you study in Bengal Institute of Technology (BIT)?</label>
+                    <div class="nes-select">
+                        <select id="member" name="member" required>
+                            <option value="" disabled selected hidden>Select...</option>
+                            <option value="true">Yes</option>
+                            <option value="false">No</option> <!-- Changed "NO" to "No" for consistency -->
+                        </select>
+                    </div>
+                </div>
+
+                <center>
+                    <button class="formbold-btn nes-btn is-warning" type="submit">Start Game!</button>
+                </center>
+            </form>
+        </div>
     </div>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.querySelector("#pokeForm");
 
-    
+            form.addEventListener("submit", function(e) {
+                e.preventDefault();
+
+                const formData = new FormData(form);
+                const data = {};
+                formData.forEach((value, key) => {
+                    data[key] = value;
+                });
+                console.log(data);
+
+                const xhr = new XMLHttpRequest();
+                const url = "https://gdsctempauth.bitgdsc.repl.co/login";
+
+                xhr.open("POST", url, true);
+                xhr.setRequestHeader("Content-Type", "application/json");
+
+                // Set the mode to 'no-cors'
+                xhr.mode = 'no-cors';
+
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                            console.log("Server responded with:", xhr.responseText);
+                            localStorage.setItem("responseData", xhr.responseText);
+                            window.location.href = "/pokeprompt";
+                        } else {
+                            console.error("Server returned an error:", xhr.statusText);
+                        }
+                    }
+                };
+
+                xhr.send(JSON.stringify(data));
+            });
+        });
+    </script>
 </body>
+
 </html>

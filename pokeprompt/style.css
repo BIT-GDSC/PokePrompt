@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'VT323', monospace;
+}
+
+#gameplay-container {
+    background-image: url("https://wallpaperaccess.com/full/1089608.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    resize: both;
+}
+
+@media (max-width: 768px) {
+    #gameplay-container {
+        background-image: url("https://cdn.discordapp.com/attachments/1152318832602525706/1152759917204209724/4x.png");
+    }
+}
+
+.desk-bg {
+    height: 500px;
+    width: 325px;
+}
+
+.desk-bg img {
+    height: 100%;
+    width: 100%;
+}
+
+.pokemon-desk {
+    position: relative;
+}
+
+.desk-ball {
+    height: 40px;
+    width: 50px;
+    position: absolute;
+    top: 18px;
+    left: 33px;
+}
+
+.desk-ball img {
+    height: 100%;
+    width: 100%;
+}
+
+.desk-display {
+    height: 260px;
+    width: 247px;
+    /* background-color: white; */
+    position: absolute;
+    top: 93px;
+    left: 40px;
+    padding-left: 10px;
+}
+
+h1 {
+    margin: 0;
+    font-weight: medium;
+    font-size: 25px;
+}
+
+textarea {
+    margin: 0;
+    border: none;
+    background-color: transparent;
+    resize: none;
+    outline: none;
+    height: 70px;
+    width: 230px;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 18px;
+}
+
+.gpt-response {
+    margin-top: 10px;
+}
+
+.desk-instructions {
+    position: absolute;
+    top: 361px;
+    left: 30px;
+    height: 50px;
+    width: 255px;
+    background-color: transparent;
+    color: black;
+    overflow: hidden;
+    padding: 0px;
+    /* position: relative; */
+}
+
+#scrolling-text {
+    position: absolute;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    line-height: 50px;
+    text-align: center;
+    /* Starting position */
+    -moz-transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    /* Apply animation to this element */
+    -moz-animation: scroll-left 5s linear infinite;
+    -webkit-animation: scroll-left 5s linear infinite;
+    animation: scroll-left 10s linear infinite;
+}
+
+@-moz-keyframes scroll-left {
+    0% {
+        -moz-transform: translateX(100%);
+    }
+    100% {
+        -moz-transform: translateX(-100%);
+    }
+}
+
+@-webkit-keyframes scroll-left {
+    0% {
+        -webkit-transform: translateX(100%);
+    }
+    100% {
+        -webkit-transform: translateX(-100%);
+    }
+}
+
+@keyframes scroll-left {
+    0% {
+        -moz-transform: translateX(100%);
+        /* Browser bug fix */
+        -webkit-transform: translateX(100%);
+        /* Browser bug fix */
+        transform: translateX(100%);
+    }
+    100% {
+        -moz-transform: translateX(-100%);
+        /* Browser bug fix */
+        -webkit-transform: translateX(-100%);
+        /* Browser bug fix */
+        transform: translateX(-100%);
+    }
+}
+
+​
