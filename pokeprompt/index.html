@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDSC-BIT | PokePrompt</title>
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <section id="gameplay-container">
+        <div class="pokemon-desk">
+            <div class="desk-bg">
+                <img src="https://cdn.discordapp.com/attachments/1152318832602525706/1152580530626363484/pokedesk.jpg" id="pokedesk-img" alt="Image">
+            </div>
+            <div class="desk-ball">
+                <img src="https://64.media.tumblr.com/f4918498af34c8764de970a2ca76795b/tumblr_mvzj2elEQA1rfjowdo1_500.gif" alt="" id="pokeball">
+            </div>
+            <div class="desk-display">
+                <div class="system-prompt">
+                    <h1>SYSTEM PROMPT:</h1>
+                    <textarea name="prompt" id="prompt" cols="30" rows="10" readonly>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint, minima eius cum necessitatibus porro molestias dignissimos totam, vero veritatis reprehenderit dolor cupiditate. Dolor aliquam ut iste aperiam nemo consequatur dolorem?</textarea>
+                </div>
+                <div class="gpt-response">
+                    <h1>POKEDESK RESPONSE:</h1>
+                    <textarea name="response" id="response" cols="30" rows="10" readonly>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint, minima eius cum necessitatibus porro molestias dignissimos totam, vero veritatis reprehenderit dolor cupiditate. Dolor aliquam ut iste aperiam nemo consequatur dolorem?</textarea>
+                </div>
+            </div>
+            <div class="desk-instructions">
+                <p id="scrolling-text">INSTRUCTIONS Goal of this game is to come up with the shortest user input that tricks the system prompt into returning the secret key (your Pokémon) back to you.</p>
+            </div>
+        </div>
+    </section>
+    <script type="module" src="app.js"></script>
+</body>
+
+</html>
