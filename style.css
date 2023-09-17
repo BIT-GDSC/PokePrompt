@@ -23,6 +23,21 @@ body {
     background-image: url('https://cdn.discordapp.com/attachments/1152318832602525706/1152582738721910865/phone_background.png');
     background-size: cover;
     overflow-x: hidden;
+    background-image: url("https://wallpaperaccess.com/full/1089608.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    resize: both;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    body {
+        background-image: url("https://cdn.discordapp.com/attachments/1152318832602525706/1152759917204209724/4x.png");
+    }
 }
 
 .logo {

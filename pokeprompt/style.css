@@ -1,4 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+/* width */
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    background: #f1f1f13d;
+}
+
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    background: #b1b1b160;
+}
+
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -14,12 +42,36 @@ body {
     align-items: center;
     min-height: 100vh;
     resize: both;
+    overflow: hidden;
 }
 
 @media (max-width: 768px) {
     #gameplay-container {
         background-image: url("https://cdn.discordapp.com/attachments/1152318832602525706/1152759917204209724/4x.png");
     }
+}
+
+.title {
+    position: absolute;
+    top: 0;
+    width: 200px;
+}
+
+.title img {
+    width: 100%;
+    height: 100%;
+}
+
+.brand {
+    position: absolute;
+    top: 5px;
+    right: 0;
+    width: 50px;
+}
+
+.brand img {
+    width: 100%;
+    height: 100%;
 }
 
 .desk-bg {
@@ -30,6 +82,7 @@ body {
 .desk-bg img {
     height: 100%;
     width: 100%;
+    border-radius: 15px;
 }
 
 .pokemon-desk {
@@ -48,6 +101,53 @@ body {
     height: 100%;
     width: 100%;
 }
+
+.desk-share {
+    position: absolute;
+    width: 200px;
+    height: 100px;
+    top: -1px;
+    right: -130px;
+}
+
+.level-display {
+    position: absolute;
+    top: 50px;
+    right: 100px;
+    width: 60px;
+    height: 25px;
+}
+
+.level-display img {
+    width: 100%;
+    height: 100%;
+}
+
+.level {
+    /* font-weight: bold; */
+    color: white;
+    position: absolute;
+    top: 1px;
+    left: 8px;
+}
+
+.leaderboard-btn {
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    width: 70px;
+    height: 25px;
+}
+
+.leaderboard-btn img {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* .table-wrapper {
+    max-height: 100px;
+} */
 
 .desk-display {
     height: 260px;
@@ -185,4 +285,39 @@ textarea {
 
 button:focus {
     outline: none !important;
+}
+
+@keyframes wave {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+    25% {
+        transform: translateX(100%) translateY(-50px);
+    }
+    50% {
+        transform: translateX(300%) translateY(0);
+    }
+    75% {
+        transform: translateX(500%) translateY(50px);
+    }
+    100% {
+        transform: translateX(1000%) translateY(0);
+    }
+}
+
+.poke-fly-path {
+    position: absolute;
+    width: 100vw;
+    height: 500px;
+    /* background-color: black; */
+    top: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.flying-pokemon {
+    position: absolute;
+    animation: wave 10s linear infinite;
+    transition: 1s ease;
+    /* You can adjust the animation duration (5s) as needed */
 }
