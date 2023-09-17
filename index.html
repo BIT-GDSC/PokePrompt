@@ -88,7 +88,7 @@
                         if (xhr.status === 200) {
                             console.log("Server responded with:", xhr.responseText);
                             localStorage.setItem("responseData", xhr.responseText);
-                            window.location.href = "/pokeprompt";
+                            window.location.href = "./pokeprompt";
                         } else {
                             console.error("Server returned an error:", xhr.statusText);
                         }
