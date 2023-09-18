@@ -80,6 +80,7 @@ body {
     width: 100%;
     background: white;
     padding: 40px;
+    border-radius: 15px;
 }
 
 .formbold-img {

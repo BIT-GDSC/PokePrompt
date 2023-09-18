@@ -11,12 +11,17 @@ const shareButton = document.querySelector(".desk-share");
 const pokeCard = document.querySelector("#poke-card")
 const sharePokeCardBtn = document.querySelector("#share-pokecard-btn");
 const downloadPokeCard = document.querySelector("#download-pokecard");
+const username = document.querySelector("#username")
+const score = document.querySelector("#score");
 
 
 const speed = 50;
 
 
 let level = JSON.parse(localStorage.getItem("metadata")).level;
+
+
+username.innerHTML = JSON.parse(localStorage.getItem("metadata")).User_json.username
 
 
 function levelpp() {
@@ -32,6 +37,7 @@ function typeWriter(txt, i = 0) {
         setTimeout(() => typeWriter(txt, i), speed);
     }
 }
+
 
 
 function fetchSystemPrompt(url) {
@@ -140,7 +146,8 @@ function submitPrompt(prompt = "hi") {
                 if (level != 4) {
                     fetchSystemPrompt(`https://pokeprompt.bitgdsc.repl.co/default/lv_${level}`);
                 } else {
-                    alert("ALL LEVELS COMPLETED!!!")
+                    // alert("ALL LEVELS COMPLETED!!!")
+                    document.getElementById('dialog-you-win').showModal();
                 }
             }
             // systemPrompt.textContent = response.sys_prompt;
@@ -167,8 +174,39 @@ function submitPrompt(prompt = "hi") {
     }
 }
 
+function fetchUserScoreByUserID(userID, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://pokeprompt.bitgdsc.repl.co/ai-ml-game/leaderboard", true);
+
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            var apiResponse = JSON.parse(xhr.responseText);
+            var user = apiResponse.res.find(function(item) {
+                return item.userID === userID;
+            });
+
+            if (user) {
+                callback(user.score);
+            } else {
+                callback(null); // User not found
+            }
+        } else {
+            console.error("Request failed with status:", xhr.status);
+            callback(null); // Request failed
+        }
+    };
+
+    xhr.send();
+}
+
+
 
 function fetchLeaderboard() {
+    // set the user score
+    fetchUserScoreByUserID(JSON.parse(localStorage.getItem("responseData")).user_id, function(score) {
+        document.getElementById("score").innerHTML = score;
+    })
+
     // Create a new XHR object
     var xhr = new XMLHttpRequest();
 
@@ -279,13 +317,13 @@ shareButton.addEventListener('click', event => {
 
 
 sharePokeCardBtn.addEventListener('click', event => {
-    shareSocials("Share PokeCard", "Look I wone a Pokémon by playing PokéPrompt by GDSC-BIT\n", pokeCard.src)
+    shareSocials("Share PokeCard", "Look I won a Pokémon by playing PokéPrompt by GDSC-BIT\n", pokeCard.src)
 });
 
 
 
 
-function winPokemon(cardURL = "https://cdn.discordapp.com/attachments/1152318832602525706/1153040321366728704/pikachu.png") {
+function winPokemon(cardURL) {
 
     document.getElementById('dialog-win').showModal();
     pokeCard.src = cardURL;
@@ -295,5 +333,7 @@ function winPokemon(cardURL = "https://cdn.discordapp.com/attachments/1152318832
 
 
 }
+
+
 // winPokemon()
 // submitPrompt()

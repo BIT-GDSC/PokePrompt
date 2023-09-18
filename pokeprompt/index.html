@@ -4,13 +4,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GDSC-BIT | PokePrompt</title>
+    <!-- Primary Meta Tags -->
+    <title>GDSC-BIT - AI & ML Game - PokéPrompt | Join GDSC-BIT Chapter Now!</title>
+    <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1152318832602525706/1153142796186816583/32eb230b326ee3c76e64f619a06f6ebb_1-min.png" />
+    <meta name="title" content="GDSC-BIT - AI & ML Game - PokéPrompt | Join GDSC-BIT Chapter Now!" />
+    <meta name="description" content="GDSC-BIT - AI & ML Game - PokéPrompt: Write the best prompts and get a chance to win exciting prizes!" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bit-gdsc.github.io/PokePrompt/" />
+    <meta property="og:title" content="GDSC-BIT - AI & ML Game - PokéPrompt | Join GDSC-BIT Chapter Now!" />
+    <meta property="og:description" content="GDSC-BIT - AI & ML Game - PokéPrompt: Write the best prompts and get a chance to win exciting prizes!" />
+    <meta property="og:image" content="https://cdn.discordapp.com/attachments/1152318832602525706/1153140926206726214/bannner-min.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://bit-gdsc.github.io/PokePrompt/" />
+    <meta property="twitter:title" content="GDSC-BIT - AI & ML Game - PokéPrompt | Join GDSC-BIT Chapter Now!" />
+    <meta property="twitter:description" content="GDSC-BIT - AI & ML Game - PokéPrompt: Write the best prompts and get a chance to win exciting prizes!" />
+    <meta property="twitter:image" content="https://cdn.discordapp.com/attachments/1152318832602525706/1153140926206726214/bannner-min.png" />
+    <script>
+        // Hide the loading screen when the page is fully loaded
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var loadingScreen = document.getElementById('loading-screen');
+                loadingScreen.style.opacity = '0';
+                setTimeout(function() {
+                    loadingScreen.style.display = 'none';
+                }, 1000); // 1 second for the fade-out animation
+            }, 3000); // 3-second delay
+        });
+    </script>
     <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-polyfills/0.1.43/polyfill.min.js" integrity="sha512-lvWiOP+aMKHllm4THsjzNleVuGOh0WGniJ3lgu/nvCbex1LlaQSxySUjAu/LTJw9FhnSL/PVYoQcckg1Q03+fQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <div id="loading-screen">
+        <img id="loading-title" src="https://cdn.discordapp.com/attachments/1152318832602525706/1152580696779530240/title.png" alt="Title Image">
+        <img id="loading-gif" src="https://pokemonchampion.carrd.co/assets/images/image01.gif?v01995342038851" alt="Loading GIF">
+        <p>Loading...</p>
+    </div>
 
     <div class="poke-fly-path">
         <img src="https://cdn.discordapp.com/attachments/1152318832602525706/1152580769047388220/output-onlinegiftools.gif" alt="Flying Pokemon" class="flying-pokemon" width="100">
@@ -32,10 +67,23 @@
         <dialog class="nes-dialog" id="dialog-pikapika">
             <form method="dialog">
                 <img src="https://i.gifer.com/2FxB.gif" width="200">
-                <p>Snoooooooooorlax</p>
+                <p>Snoooooooooorlax<br>Eat, Sleep, Code Repeat!</p>
                 <menu class="dialog-menu">
                     <button class="nes-btn">sleep</button>
 
+                </menu>
+            </form>
+        </dialog>
+    </section>
+    <section>
+        <dialog class="nes-dialog" id="dialog-you-win">
+            <form method="dialog">
+                <img src="https://cdn.discordapp.com/attachments/1152318832602525706/1153148808293777498/you-win.png" height="300">
+                <menu class="dialog-menu">
+                    <h4 class="nes-text">Thanks for Participating!</h4>
+                    <!-- <p><a href="https://gdsc.community.dev/bengal-institute-of-technology-kolkata/">JOIN GDSC-BIT</a></p> -->
+
+                    <button class="nes-btn">Exit</button>
                 </menu>
             </form>
         </dialog>
@@ -57,9 +105,14 @@
 
     <section>
         <dialog class="nes-dialog" id="dialog-leaderboard">
+            <div class="user-details">
+                <p>Username: <span id="username"></span></p>
+                <p>Score: <span id="score"></span></p>
+            </div>
             <form method="dialog">
+
                 <div class="table-wrapper">
-                    <div class="nes-table-responsive">
+                    <div class="nes-table-responsive resp-table">
                         <table class="nes-table is-bordered is-centered">
                             <thead>
                                 <tr>
@@ -99,6 +152,7 @@
             <div class="desk-share">
                 <img src="https://cdn.discordapp.com/attachments/1152318832602525706/1153022353966637158/sharebtn.png" alt="" id="share-btn">
             </div>
+
             <div class="desk-ball">
                 <img src="https://64.media.tumblr.com/f4918498af34c8764de970a2ca76795b/tumblr_mvzj2elEQA1rfjowdo1_500.gif" alt="" id="pokeball">
             </div>
@@ -108,11 +162,12 @@
             </div>
             <div class="leaderboard-btn">
                 <img src="https://cdn.discordapp.com/attachments/1152318832602525706/1153017268184301598/leaderboard-btn_1.png" alt="" id="level-bg">
+
             </div>
             <div class="desk-display">
                 <div class="system-prompt">
                     <h1>SYSTEM PROMPT:</h1>
-                    <textarea name="prompt" id="prompt" cols="30" rows="10" readonly>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint, minima eius cum necessitatibus porro molestias dignissimos totam, vero veritatis reprehenderit dolor cupiditate. Dolor aliquam ut iste aperiam nemo consequatur dolorem?</textarea>
+                    <textarea name="prompt" id="prompt" cols="30" rows="10" readonly></textarea>
                 </div>
                 <div class="gpt-response">
                     <h1>POKEDESK RESPONSE:</h1>
